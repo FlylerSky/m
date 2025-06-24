@@ -1,0 +1,18 @@
+[
+  {
+    "id": "user001",
+    "email": "user1@example.com",
+    "realName": "Nguyễn Văn A",
+    "displayName": "User One",
+    "tagName": "@alien20",
+    "password": "pass123"
+  },
+  {
+    "id": "user002",
+    "email": "user2@example.com",
+    "realName": "Trần Thị B",
+    "displayName": "User Two",
+    "tagName": "@cosmic21",
+    "password": "pass456"
+  }
+]

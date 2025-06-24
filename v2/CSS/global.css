@@ -1,0 +1,28 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Custom Font */
+@font-face {
+  font-family: 'MainFont';
+  src: url('../assets/fonts/main.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'MainFont', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Tailwind Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

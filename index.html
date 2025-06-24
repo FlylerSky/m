@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P2-Media - Trang chủ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col">
+  <header class="bg-gray-900 py-4 sticky top-0 shadow-md z-10">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">P2-Media</h1>
+      <div class="relative">
+        <img id="user-avatar" src="" alt="Avatar" class="w-10 h-10 rounded-full cursor-pointer">
+        <div id="user-menu" class="hidden absolute right-0 mt-2 w-64 bg-gray-900 rounded-lg shadow-lg max-h-96 overflow-y-auto">
+          <button id="close-menu" class="absolute top-2 right-2 text-gray-400 hover:text-white">×</button>
+          <div class="p-4 space-y-2">
+            <a href="/index.html" class="block px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-md">Trang chủ</a>
+            <a href="/profile.html" class="block px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-md">Profile</a>
+            <a href="/settings.html" class="block px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-md">Setting</a>
+            <a href="/messages.html" class="block px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-md">Hòm thư</a>
+            <a href="/soulmate.html" class="block px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-md">Tri kỉ</a>
+            <button id="logout-btn" class="w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-md">Đăng xuất</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="container mx-auto flex-grow py-6 px-4">
+    <div id="post-list" class="space-y-6"></div>
+  </main>
+  <footer class="bg-gray-900 text-gray-400 text-center py-4">
+    <p>© 2025 P2-Media. All rights reserved.</p>
+  </footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>

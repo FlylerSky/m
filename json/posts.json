@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "title": "Chào mừng đến với P2-Media!",
+    "content": "Đây là bài viết đầu tiên của P2-Media. Chúng tôi rất vui được chào đón bạn đến với cộng đồng của chúng tôi. Hãy cùng chia sẻ những khoảnh khắc đáng nhớ và kết nối với mọi người trên toàn thế giới!",
+    "displayName": "Van A",
+    "tag": "@vanA123",
+    "avatar": "https://via.placeholder.com/40/1e3a8a",
+    "image": "https://via.placeholder.com/400x200",
+    "iframe": "",
+    "date": "2025-06-17"
+  },
+  {
+    "id": 2,
+    "title": "Một ngày tuyệt vời",
+    "content": "Hôm nay tôi đã đi dạo công viên và chụp được một bức ảnh đẹp. Mọi người nghĩ sao về nó? Đây là một video ngắn tôi tìm thấy rất thú vị, hãy xem nhé!",
+    "displayName": "Thi B",
+    "tag": "@thiB456",
+    "avatar": "https://via.placeholder.com/40/4b5563",
+    "image": "",
+    "iframe": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "date": "2025-06-17"
+  }
+]

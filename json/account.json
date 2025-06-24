@@ -1,0 +1,28 @@
+[
+  {
+    "fullName": "Nguyen Van A",
+    "displayName": "Van A",
+    "id": "user123",
+    "birthday": "1995-01-01",
+    "joinDate": "2025-06-17",
+    "gender": "Nam",
+    "country": "Vietnam",
+    "tag": "@vanA123",
+    "email": "vana@example.com",
+    "password": "password123",
+    "avatar": "https://via.placeholder.com/40/1e3a8a"
+  },
+  {
+    "fullName": "Tran Thi B",
+    "displayName": "Thi B",
+    "id": "user456",
+    "birthday": "1998-05-20",
+    "joinDate": "2025-06-17",
+    "gender": "Nữ",
+    "country": "Vietnam",
+    "tag": "@thiB456",
+    "email": "thib@example.com",
+    "password": "password456",
+    "avatar": "https://via.placeholder.com/40/4b5563"
+  }
+]

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P2-Media - Chào mừng</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col items-center justify-center">
+  <main class="container mx-auto px-4 text-center">
+    <h1 class="text-5xl sm:text-6xl font-bold mb-4">P2-Media</h1>
+    <p class="text-lg sm:text-xl text-gray-400 mb-8">Kết nối thế giới, chia sẻ khoảnh khắc</p>
+    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+      <button id="login-btn" class="bg-white text-black font-semibold px-8 py-3 rounded-full hover:bg-gray-200 transition duration-300">Đăng nhập</button>
+      <button id="register-btn" class="bg-blue-500 text-white font-semibold px-8 py-3 rounded-full hover:bg-blue-600 transition duration-300">Đăng ký</button>
+    </div>
+  </main>
+  <!-- Modal đăng nhập -->
+  <div id="login-container" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden">
+    <div class="bg-gray-900 p-6 sm:p-8 rounded-2xl shadow-lg w-full max-w-sm sm:max-w-md">
+      <button id="close-login" class="absolute top-4 right-4 text-gray-400 hover:text-white">×</button>
+      <h2 class="text-2xl font-semibold mb-6">Đăng nhập vào P2-Media</h2>
+      <div class="space-y-5">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
+          <input type="email" id="email" class="mt-1 w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div>
+          <label for="account-id" class="block text-sm font-medium text-gray-300">ID tài khoản</label>
+          <input type="text" id="account-id" class="mt-1 w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-300">Mật khẩu</label>
+          <input type="password" id="password" class="mt-1 w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <button id="submit-login" class="w-full bg-blue-500 text-white font-semibold py-3 rounded-md hover:bg-blue-600 transition duration-300">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+  <script src="/js/main.js"></script>
+  <script>
+    // Đóng modal đăng nhập
+    document.getElementById('close-login')?.addEventListener('click', () => {
+      document.getElementById('login-container').classList.add('hidden');
+    });
+  </script>
