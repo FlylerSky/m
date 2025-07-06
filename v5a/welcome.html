@@ -34,6 +34,7 @@
                     <a href="https://docs.google.com/forms/d/your-forgot-password-form-id" target="_blank" class="text-blue-400 hover:text-blue-500 text-sm">Quên mật khẩu?</a>
                 </div>
                 <p id="errorMessage" class="text-red-500 text-sm text-center mt-4 hidden"></p>
+                Tài khoản thử nghiệm: Email: "a" | Mật khẩu: "a". 
             </div>
         </div>
     </div>
@@ -67,12 +68,22 @@
             const logoutToken = getCookie('LogoutToken');
             const avatar = getCookie('Avatar');
             if (accountID && displayName && logoutToken && avatar) {
-                fetch('account.json')
-                    .then(response => response.json())
+                fetch('account.json?t=' + new Date().getTime())
+                    .then(response => {
+                        if (!response.ok) throw new Error('Không thể tải account.json');
+                        return response.json();
+                    })
                     .then(accounts => {
                         const user = accounts.find(acc => acc.AccountID === accountID && acc.logoutToken === logoutToken);
                         if (user && !user.isBanned) {
+                            console.log('User already logged in:', user.AccountID);
                             window.location.href = 'index.html';
+                        } else {
+                            console.log('Invalid or banned user, clearing cookies');
+                            setCookie('AccountID', '', -1);
+                            setCookie('DisplayName', '', -1);
+                            setCookie('LogoutToken', '', -1);
+                            setCookie('Avatar', '', -1);
                         }
                     })
                     .catch(error => {
@@ -80,60 +91,6 @@
                     });
             }
         };
-
-        // Load account data
-        const accounts = [
-            {
-                "AccountID": "user1",
-                "DisplayName": "Người Dùng 1",
-                "Email": "user1@example.com",
-                "Password": "password123",
-                "avatar": "https://example.com/avatar1.jpg",
-                "logoutToken": "token1",
-                "isVerified": true,
-                "isSponsor": false,
-                "isBanned": false,
-                "Birthday": "1995-08-15",
-                "Gender": "Nam",
-                "SocialLinks": {
-                    "Facebook": "https://facebook.com/user1",
-                    "Twitter": "https://twitter.com/user1",
-                    "Instagram": "https://instagram.com/user1"
-                },
-                "JoinDate": "2024-01-10",
-                "BanHistory": [
-                    {
-                        "BanDate": "2024-06-01",
-                        "Reason": "Vi phạm nội quy cộng đồng",
-                        "UnbanDate": "2024-06-15"
-                    }
-                ],
-                "SoulmateID": "user2",
-                "SoulmateDate": null
-            },
-            {
-                "AccountID": "user2",
-                "DisplayName": "Người Dùng 2",
-                "Email": "user2@example.com",
-                "Password": "password456",
-                "avatar": "https://example.com/avatar2.jpg",
-                "logoutToken": "token2",
-                "isVerified": false,
-                "isSponsor": true,
-                "isBanned": false,
-                "Birthday": "1998-03-22",
-                "Gender": "Nữ",
-                "SocialLinks": {
-                    "Facebook": "https://facebook.com/user2",
-                    "Twitter": "",
-                    "Instagram": "https://instagram.com/user2"
-                },
-                "JoinDate": "2024-03-20",
-                "BanHistory": [],
-                "SoulmateID": "user1",
-                "SoulmateDate": null
-            }
-        ];
 
         const loginBtn = document.getElementById('loginBtn');
         const loginForm = document.getElementById('loginForm');
@@ -145,11 +102,12 @@
         // Toggle login form visibility
         loginBtn.addEventListener('click', () => {
             loginForm.classList.toggle('hidden');
+            errorMessage.classList.add('hidden'); // Reset error message
         });
 
         // Handle login submission
         submitLogin.addEventListener('click', () => {
-            const email = emailInput.value.trim();
+            const email = emailInput.value.trim().toLowerCase();
             const password = passwordInput.value.trim();
 
             // Validate input
@@ -159,26 +117,45 @@
                 return;
             }
 
-            // Check credentials
-            const user = accounts.find(account => account.Email === email && account.Password === password);
+            // Fetch account data
+            fetch('account.json?t=' + new Date().getTime())
+                .then(response => {
+                    if (!response.ok) throw new Error('Không thể tải account.json: ' + response.status);
+                    return response.json();
+                })
+                .then(accounts => {
+                    console.log('Accounts loaded:', accounts); // Debug: log all accounts
+                    const user = accounts.find(account => 
+                        account.Email.toLowerCase() === email && 
+                        account.Password === password
+                    );
 
-            if (user) {
-                if (user.isBanned) {
-                    errorMessage.textContent = 'Tài khoản của bạn đã bị cấm.';
+                    if (user) {
+                        if (user.isBanned) {
+                            console.log('Login failed: Account banned', user.AccountID);
+                            errorMessage.textContent = 'Tài khoản của bạn đã bị cấm.';
+                            errorMessage.classList.remove('hidden');
+                        } else {
+                            console.log('Login successful for user:', user); // Debug: log successful user
+                            // Set cookies for login state
+                            setCookie('AccountID', user.AccountID, 7);
+                            setCookie('DisplayName', user.DisplayName, 7);
+                            setCookie('LogoutToken', user.logoutToken, 7);
+                            setCookie('Avatar', user.avatar, 7);
+                            // Redirect to index.html
+                            window.location.href = 'index.html';
+                        }
+                    } else {
+                        console.log('Login failed: Email or password incorrect', { email, password });
+                        errorMessage.textContent = 'Email hoặc mật khẩu không đúng.';
+                        errorMessage.classList.remove('hidden');
+                    }
+                })
+                .catch(error => {
+                    console.error('Lỗi khi kiểm tra tài khoản:', error);
+                    errorMessage.textContent = 'Có lỗi xảy ra, thử lại sau!';
                     errorMessage.classList.remove('hidden');
-                } else {
-                    // Set cookies for login state (consistent with system script)
-                    setCookie('AccountID', user.AccountID, 7);
-                    setCookie('DisplayName', user.DisplayName, 7);
-                    setCookie('LogoutToken', user.logoutToken, 7);
-                    setCookie('Avatar', user.avatar, 7);
-                    // Redirect to index.html
-                    window.location.href = 'index.html';
-                }
-            } else {
-                errorMessage.textContent = 'Email hoặc mật khẩu không đúng.';
-                errorMessage.classList.remove('hidden');
-            }
+                });
         });
     </script>
 </body>

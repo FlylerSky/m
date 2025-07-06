@@ -1,4 +1,32 @@
 [
+    {
+    "AccountID": "a",
+    "DisplayName": "Tester",
+    "Email": "a",
+    "Password": "a",
+    "avatar": "https://example.com/avatar1.jpg",
+    "logoutToken": "token178",
+    "isVerified": true,
+    "isSponsor": false,
+    "isBanned": false,
+    "Birthday": "1995-08-15",
+    "Gender": "Nam",
+    "SocialLinks": {
+      "Facebook": "https://facebook.com/user1",
+      "Twitter": "https://twitter.com/user1",
+      "Instagram": "https://instagram.com/user1"
+    },
+    "JoinDate": "2024-01-10",
+    "BanHistory": [
+      {
+        "BanDate": "2024-06-01",
+        "Reason": "Vi phạm nội quy cộng đồng",
+        "UnbanDate": "2024-06-15"
+      }
+    ],
+    "SoulmateID": null,
+    "SoulmateDate": null
+  },
   {
     "AccountID": "user1",
     "DisplayName": "Người Dùng 1",
@@ -25,6 +53,30 @@
       }
     ],
     "SoulmateID": "user2",
+    "SoulmateDate": "2025-07-06"
+  },
+    {
+    "AccountID": "flylersky20",
+    "DisplayName": "FlylerSky",
+    "Email": "admin@gmail.com",
+    "Password": "flylersky20",
+    "avatar": "https://example.com/avatar1.jpg",
+    "logoutToken": "flymediad",
+    "isVerified": true,
+    "isSponsor": false,
+    "isBanned": false,
+    "Birthday": "2009-05-25",
+    "Gender": "Nam",
+    "SocialLinks": {
+      "Facebook": "https://facebook.com/user1",
+      "Twitter": "https://twitter.com/user1",
+      "Instagram": "https://instagram.com/user1"
+    },
+    "JoinDate": "2025-07-06",
+    "BanHistory": [
+      
+    ],
+    "SoulmateID": null,
     "SoulmateDate": null
   },
   {
@@ -47,6 +99,7 @@
     "JoinDate": "2024-03-20",
     "BanHistory": [],
     "SoulmateID": "user1",
-    "SoulmateDate": null
+    "SoulmateDate": "2025-07-06"
   }
+
 ]

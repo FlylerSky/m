@@ -1,9 +1,3 @@
 [
-  {
-    "RequestID": "req1",
-    "RequesterID": "user3",
-    "TargetID": "user2",
-    "RequestDate": "2025-06-03",
-    "Status": "pending"
-  }
+  
 ]

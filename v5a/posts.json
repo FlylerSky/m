@@ -1,4 +1,14 @@
 [
+    {
+    "PostID": "official01",
+    "Username": "FlylerSky",
+    "PostContent": "Chào mừng đến với P1-Media nhé, sản phẩm chưa hoàn thiện, vui lòng kiên nhẫn",
+    "Timestamp": "2025-07-06T18:51:00Z",
+    "images": ["https://example.com/image1.jpg"],
+    "iframes": [],
+    "videos": [],
+    "audios": []
+  },
   {
     "PostID": "post1",
     "Username": "Người Dùng 1",
