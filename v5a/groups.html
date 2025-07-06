@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P1-Media</title>
+  <link id="stylesheet" href="styles.css" rel="stylesheet">
+  <script src="script.js" defer></script>
+</head>
+<body onload="checkLoginStatus(); applyTheme();">
+  <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-900 dark:text-gray-100">P1-Media</h1>
+      <div class="relative flex items-center gap-2">
+        <input id="search-input" type="text" placeholder="Tìm kiếm..." class="input" oninput="searchGroups()">
+        <img id="user-avatar" src="" alt="Avatar" class="w-10 h-10 rounded-full cursor-pointer" onclick="toggleMenu()">
+      </div>
+    </div>
+  </nav>
+
+  <div id="user-menu" class="fixed top-0 left-0 hidden z-50">
+    <span id="close-menu" class="absolute top-4 right-4 text-blue-900 dark:text-gray-100" onclick="toggleMenu()">✕</span>
+    <a href="index.html">Trang chủ</a>
+    <a href="profile.html">Thông tin cá nhân</a>
+    <a href="groups.html">Hội nhóm</a>
+    <a href="#" onclick="toggleMailbox()">Hòm thư</a>
+    <a href="soulmate.html">Tri kỉ</a>
+    <a href="updates.html">Bản cập nhật</a>
+    <a href="#" onclick="logout()">Đăng xuất</a>
+    <a href="#" onclick="openSettings()">Setting</a>
+  </div>
+
+  <div id="settings-modal" class="fixed top-0 left-0 hidden z-50">
+    <div class="container mx-auto p-6">
+      <span id="close-settings" class="absolute top-4 right-4 text-blue-900 dark:text-gray-100 cursor-pointer" onclick="closeSettings()">✕</span>
+      <h2 class="text-2xl font-bold mb-6 text-blue-900 dark:text-gray-100">Tùy Chọn Cài Đặt</h2>
+      <div class="mb-6">
+        <h3 class="text-lg font-semibold mb-2 text-blue-900 dark:text-gray-100">Giao diện</h3>
+        <label class="flex items-center gap-2">
+          <input id="theme-toggle" type="checkbox" onchange="toggleTheme()">
+          <span class="text-gray-700 dark:text-gray-300">Chế độ tối</span>
+        </label>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-semibold mb-2 text-blue-900 dark:text-gray-100">Cài đặt quyền riêng tư</h3>
+        <p class="text-gray-700 dark:text-gray-300">Tính năng đang được phát triển.</p>
+      </div>
+      <div class="mb-6">
+        <h3 class="text-lg font-semibold mb-2 text-blue-900 dark:text-gray-100">Đổi mật khẩu</h3>
+        <input id="new-password" type="password" class="input mb-2" placeholder="Mật khẩu mới">
+        <button class="btn btn-primary" onclick="changePassword()">Cập nhật mật khẩu</button>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2 text-blue-900 dark:text-gray-100">Xóa tài khoản</h3>
+        <button class="btn btn-red" onclick="deleteAccount()">Xóa tài khoản</button>
+      </div>
+      <p id="error-message" class="text-red-500 mt-4 hidden"></p>
+    </div>
+  </div>
+
+  <div id="mailbox-modal" class="fixed top-0 left-0 hidden z-50">
+    <div class="container mx-auto p-6">
+      <span id="close-mailbox" class="absolute top-4 right-4 text-blue-900 dark:text-gray-100 cursor-pointer" onclick="closeMailbox()">✕</span>
+      <h2 class="text-2xl font-bold mb-6 text-blue-900 dark:text-gray-100">Hòm Thư</h2>
+      <select id="mail-filter" onchange="filterMailbox()" class="input mb-4">
+        <option value="newest">Mới nhất</option>
+        <option value="oldest">Cũ nhất</option>
+      </select>
+      <div id="mailbox-content"></div>
+    </div>
+  </div>
+
+  <div class="container mt-20">
+    <h2 class="text-2xl font-bold mb-6 text-blue-900 dark:text-gray-100">Trung Tâm Hội Nhóm</h2>
+    <div id="group-center">
+      <button class="btn btn-primary mb-4" onclick="createGroup()">Tạo hội nhóm</button>
+      <select id="group-post-filter" onchange="filterGroupPosts()" class="input mb-4">
+        <option value="newest">Mới nhất</option>
+        <option value="oldest">Cũ nhất</option>
+      </select>
+      <div id="group-list"></div>
+      <div id="group-posts">
+        <h3 class="text-xl font-bold mb-4 text-blue-900 dark:text-gray-100">Bài Viết Hội Nhóm</h3>
+        <div id="group-post-list"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

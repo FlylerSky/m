@@ -1,0 +1,22 @@
+[
+  {
+    "PostID": "post1",
+    "Username": "Người Dùng 1",
+    "PostContent": "Chia sẻ video đầu tiên của mình!",
+    "Timestamp": "2025-06-07T10:00:00Z",
+    "images": ["https://example.com/image1.jpg"],
+    "iframes": ["<iframe src='https://drive.google.com/file/d/1a2b3c4d5e6f7g8h9i0j/preview' width='100%' height='360' allow='autoplay'></iframe>"],
+    "videos": [],
+    "audios": []
+  },
+  {
+    "PostID": "post2",
+    "Username": "Người Dùng 2",
+    "PostContent": "Nghe bài nhạc này nhé, siêu chill!",
+    "Timestamp": "2025-06-07T11:00:00Z",
+    "images": [],
+    "iframes": ["<iframe src='https://drive.google.com/file/d/9j0i8h7g6f5e4d3c2b1a/preview' width='100%' height='80' allow='autoplay'></iframe>"],
+    "videos": [],
+    "audios": []
+  }
+]

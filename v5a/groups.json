@@ -1,0 +1,16 @@
+[
+  {
+    "GroupID": "group1",
+    "GroupName": "Cộng đồng yêu âm nhạc",
+    "LeaderID": "user1",
+    "Members": ["user1", "user2"],
+    "Description": "Hội nhóm dành cho những người yêu thích âm nhạc."
+  },
+  {
+    "GroupID": "group2",
+    "GroupName": "Nhóm sáng tạo nội dung",
+    "LeaderID": "user2",
+    "Members": ["user2"],
+    "Description": "Chia sẻ kinh nghiệm sáng tạo video và bài viết."
+  }
+]

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P1-Media - Tri kỉ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="checkLoginStatus(); applyTheme(); loadSoulmateCenter();">
+  <nav class="bg-white dark:bg-gray-800 shadow-md py-3 fixed w-full top-0 z-10">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
+      <h1 class="text-xl font-bold text-blue-900 dark:text-gray-100">P1-Media</h1>
+      <div class="relative flex items-center gap-3">
+        <input id="search-input" type="text" placeholder="Tìm kiếm..." class="input" oninput="searchSoulmates()">
+        <img id="user-avatar" src="" alt="Avatar" class="w-8 h-8 rounded-full cursor-pointer" onclick="toggleMenu()">
+      </div>
+    </div>
+  </nav>
+
+  <div id="user-menu" class="hidden fixed inset-0 z-20 flex flex-col items-center justify-center">
+    <span id="close-menu" class="absolute top-4 right-4 text-blue-900 dark:text-gray-100" onclick="toggleMenu()">✕</span>
+    <a href="index.html" class="hover:bg-gray-100 dark:hover:bg-gray-700">Trang chủ</a>
+    <a href="profile.html" class="hover:bg-gray-100 dark:hover:bg-gray-700">Thông tin cá nhân</a>
+    <a href="#" class="hover:bg-gray-100 dark:hover:bg-gray-700">Hội nhóm</a>
+    <a href="#" onclick="toggleMailbox()" class="hover:bg-gray-100 dark:hover:bg-gray-700">Hòm thư</a>
+    <a href="soulmate.html" class="hover:bg-gray-100 dark:hover:bg-gray-700">Tri kỉ</a>
+    <a href="#" class="hover:bg-gray-100 dark:hover:bg-gray-700">Bản cập nhật</a>
+    <a href="#" onclick="logout()" class="hover:bg-gray-100 dark:hover:bg-gray-700">Đăng xuất</a>
+    <a href="#" onclick="openSettings()" class="hover:bg-gray-100 dark:hover:bg-gray-700">Setting</a>
+  </div>
+
+  <div id="settings-modal" class="hidden fixed inset-0 z-30 flex flex-col items-center justify-center">
+    <span id="close-settings" class="absolute top-4 right-4 text-blue-900 dark:text-gray-100" onclick="closeSettings()">✕</span>
+    <h2 class="text-2xl font-bold mb-6">Tùy Chọn Cài Đặt</h2>
+    <div class="w-full max-w-md space-y-6">
+      <div>
+        <h3 class="text-lg font-semibold">Giao diện</h3>
+        <label class="flex items-center space-x-2">
+          <input id="theme-toggle" type="checkbox" onchange="toggleTheme()">
+          <span>Chế độ tối</span>
+        </label>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold">Cài đặt quyền riêng tư</h3>
+        <p class="text-gray-600 dark:text-gray-400">Tính năng đang được phát triển.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold">Đổi mật khẩu</h3>
+        <input id="new-password" type="password" class="input" placeholder="Mật khẩu mới">
+        <button class="btn btn-primary mt-2" onclick="changePassword()">Cập nhật mật khẩu</button>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold">Xóa tài khoản</h3>
+        <button class="btn btn-red" onclick="deleteAccount()">Xóa tài khoản</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mailbox-modal" class="hidden fixed inset-0 z-30 flex flex-col items-center justify-center">
+    <span id="close-mailbox" class="absolute top-4 right-4 text-blue-900 dark:text-gray-100" onclick="closeMailbox()">✕</span>
+    <h2 class="text-2xl font-bold mb-6">Hòm Thư</h2>
+    <select id="mail-filter" onchange="filterMailbox()" class="input mb-4">
+      <option value="newest">Mới nhất</option>
+      <option value="oldest">Cũ nhất</option>
+    </select>
+    <div id="mailbox-content" class="w-full max-w-md"></div>
+  </div>
+
+  <div class="container">
+    <h2 class="text-2xl font-bold mb-4">Trung Tâm Tri Kỉ</h2>
+    <div id="soulmate-center"></div>
+    <div id="soulmate-posts" class="mt-8">
+      <h3 class="text-xl font-bold mb-4">Bài Viết Của Tri Kỉ</h3>
+      <select id="soulmate-post-filter" onchange="filterSoulmatePosts()" class="input mb-4">
+        <option value="newest">Mới nhất</option>
+        <option value="oldest">Cũ nhất</option>
+      </select>
+      <div id="soulmate-post-list"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

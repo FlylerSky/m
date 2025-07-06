@@ -1,0 +1,14 @@
+[
+  {
+    "UpdateID": "update1",
+    "Title": "Bản Cập Nhật 1.0.0",
+    "Content": "Ra mắt P1-Media với các tính năng: đăng bài, Trung tâm Tri kỉ, và nhúng media từ Google Drive.",
+    "ReleaseDate": "2025-06-07T10:00:00Z"
+  },
+  {
+    "UpdateID": "update2",
+    "Title": "Bản Cập Nhật 1.1.0",
+    "Content": "Thêm Trung tâm Cập nhật để hiển thị Patch Note. Cải thiện giao diện navbar và khoảng cách bài viết.",
+    "ReleaseDate": "2025-06-08T10:00:00Z"
+  }
+]

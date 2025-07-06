@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P1-Media - Welcome</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-white font-roboto min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col items-center">
+            <h1 class="text-4xl font-bold mb-8">Chào mừng đến với P1-Media</h1>
+            <div class="space-x-4 mb-8">
+                <button id="loginBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full transition duration-300">Đăng nhập</button>
+                <a href="https://docs.google.com/forms/d/your-signup-form-id" target="_blank">
+                    <button class="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-6 rounded-full transition duration-300">Đăng ký</button>
+                </a>
+            </div>
+
+            <!-- Login Form (Hidden by default) -->
+            <div id="loginForm" class="hidden bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md">
+                <h2 class="text-2xl font-semibold mb-4 text-center">Đăng nhập</h2>
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium mb-1">Email</label>
+                    <input type="email" id="email" class="w-full bg-gray-800 text-white border border-gray-700 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-sm font-medium mb-1">Mật khẩu</label>
+                    <input type="password" id="password" class="w-full bg-gray-800 text-white border border-gray-700 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                </div>
+                <button id="submitLogin" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-300">Đăng nhập</button>
+                <div class="text-center mt-4">
+                    <a href="https://docs.google.com/forms/d/your-forgot-password-form-id" target="_blank" class="text-blue-400 hover:text-blue-500 text-sm">Quên mật khẩu?</a>
+                </div>
+                <p id="errorMessage" class="text-red-500 text-sm text-center mt-4 hidden"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cookie utility functions
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i].trim();
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Check if user is already logged in
+        window.onload = function() {
+            const accountID = getCookie('AccountID');
+            const displayName = getCookie('DisplayName');
+            const logoutToken = getCookie('LogoutToken');
+            const avatar = getCookie('Avatar');
+            if (accountID && displayName && logoutToken && avatar) {
+                fetch('account.json')
+                    .then(response => response.json())
+                    .then(accounts => {
+                        const user = accounts.find(acc => acc.AccountID === accountID && acc.logoutToken === logoutToken);
+                        if (user && !user.isBanned) {
+                            window.location.href = 'index.html';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Lỗi khi kiểm tra trạng thái đăng nhập:', error);
+                    });
+            }
+        };
+
+        // Load account data
+        const accounts = [
+            {
+                "AccountID": "user1",
+                "DisplayName": "Người Dùng 1",
+                "Email": "user1@example.com",
+                "Password": "password123",
+                "avatar": "https://example.com/avatar1.jpg",
+                "logoutToken": "token1",
+                "isVerified": true,
+                "isSponsor": false,
+                "isBanned": false,
+                "Birthday": "1995-08-15",
+                "Gender": "Nam",
+                "SocialLinks": {
+                    "Facebook": "https://facebook.com/user1",
+                    "Twitter": "https://twitter.com/user1",
+                    "Instagram": "https://instagram.com/user1"
+                },
+                "JoinDate": "2024-01-10",
+                "BanHistory": [
+                    {
+                        "BanDate": "2024-06-01",
+                        "Reason": "Vi phạm nội quy cộng đồng",
+                        "UnbanDate": "2024-06-15"
+                    }
+                ],
+                "SoulmateID": "user2",
+                "SoulmateDate": null
+            },
+            {
+                "AccountID": "user2",
+                "DisplayName": "Người Dùng 2",
+                "Email": "user2@example.com",
+                "Password": "password456",
+                "avatar": "https://example.com/avatar2.jpg",
+                "logoutToken": "token2",
+                "isVerified": false,
+                "isSponsor": true,
+                "isBanned": false,
+                "Birthday": "1998-03-22",
+                "Gender": "Nữ",
+                "SocialLinks": {
+                    "Facebook": "https://facebook.com/user2",
+                    "Twitter": "",
+                    "Instagram": "https://instagram.com/user2"
+                },
+                "JoinDate": "2024-03-20",
+                "BanHistory": [],
+                "SoulmateID": "user1",
+                "SoulmateDate": null
+            }
+        ];
+
+        const loginBtn = document.getElementById('loginBtn');
+        const loginForm = document.getElementById('loginForm');
+        const submitLogin = document.getElementById('submitLogin');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Toggle login form visibility
+        loginBtn.addEventListener('click', () => {
+            loginForm.classList.toggle('hidden');
+        });
+
+        // Handle login submission
+        submitLogin.addEventListener('click', () => {
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            // Validate input
+            if (!email || !password) {
+                errorMessage.textContent = 'Vui lòng nhập email và mật khẩu.';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            // Check credentials
+            const user = accounts.find(account => account.Email === email && account.Password === password);
+
+            if (user) {
+                if (user.isBanned) {
+                    errorMessage.textContent = 'Tài khoản của bạn đã bị cấm.';
+                    errorMessage.classList.remove('hidden');
+                } else {
+                    // Set cookies for login state (consistent with system script)
+                    setCookie('AccountID', user.AccountID, 7);
+                    setCookie('DisplayName', user.DisplayName, 7);
+                    setCookie('LogoutToken', user.logoutToken, 7);
+                    setCookie('Avatar', user.avatar, 7);
+                    // Redirect to index.html
+                    window.location.href = 'index.html';
+                }
+            } else {
+                errorMessage.textContent = 'Email hoặc mật khẩu không đúng.';
+                errorMessage.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

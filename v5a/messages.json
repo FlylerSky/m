@@ -1,0 +1,49 @@
+[
+  {
+    "type": "server",
+    "content": "Chào mừng bạn đến với P1-Media! Cộng đồng của chúng tôi đang phát triển.",
+    "timestamp": "2025-05-26 12:00"
+  },
+  {
+    "type": "personal",
+    "sender": "Người Dùng 1",
+    "recipient": "Người Dùng 2",
+    "content": "Chào bạn, mình vừa đăng bài mới, xem thử nhé!",
+    "timestamp": "2025-05-27 14:30"
+  },
+  {
+    "type": "personal",
+    "sender": "Người Dùng 1",
+    "recipient": "Người Dùng 2",
+    "content": "Hôm nay có sự kiện đặc biệt, đừng bỏ lỡ!",
+    "timestamp": "2025-05-27 15:00"
+  },
+  {
+    "type": "personal",
+    "sender": "Người Dùng 1",
+    "recipient": "Người Dùng 2",
+    "content": "Hôm nay có sự kiện đặc biệt, đừng bỏ lỡ!",
+    "timestamp": "2025-05-27 15:00"
+  },
+  {
+    "type": "personal",
+    "sender": "Người Dùng 1",
+    "recipient": "Người Dùng 2",
+    "content": "Hôm nay có sự kiện đặc biệt, đừng bỏ lỡ!",
+    "timestamp": "2025-05-27 15:00"
+  },
+  {
+    "type": "personal",
+    "sender": "Người Dùng 1",
+    "recipient": "Người Dùng 2",
+    "content": "Hôm nay có sự kiện đặc biệt, đừng bỏ lỡ! Chào mừng bạn đến với P1-Media! Cộng đồng của chúng tôi đang phát triển.",
+    "timestamp": "2025-05-27 15:00"
+  },
+  {
+    "type": "soulmate_request",
+    "sender": "Người Dùng 1",
+    "recipient": "Người Dùng 2",
+    "content": "Người Dùng 1 (ID: user1) muốn trở thành Tri kỉ của bạn! Vui lòng xác nhận tại: https://forms.gle/soulmate-confirm",
+    "timestamp": "2025-06-07 10:39"
+  }
+]
