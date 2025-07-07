@@ -63,7 +63,7 @@
     "avatar": "https://example.com/avatar1.jpg",
     "logoutToken": "flymediad",
     "isVerified": true,
-    "isSponsor": false,
+    "isSponsor": true,
     "isBanned": false,
     "Birthday": "2009-05-25",
     "Gender": "Nam",
