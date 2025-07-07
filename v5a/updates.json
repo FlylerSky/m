@@ -1,4 +1,10 @@
 [
+   {
+    "UpdateID": "update3",
+    "Title": "Thông báo thử nghiệm",
+    "Content": "P1 Media sẽ được truy cập trên mạng ở giai đoạn thử nghiệm chưa hoàn chỉnh, mọi người sẽ dùng tài khoản Tester để tham quan",
+    "ReleaseDate": "2025-07-07T22:47:00Z"
+  },
   {
     "UpdateID": "update1",
     "Title": "Bản Cập Nhật 1.0.0",
