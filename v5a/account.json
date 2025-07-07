@@ -8,7 +8,7 @@
     "logoutToken": "token178",
     "isVerified": true,
     "isSponsor": false,
-    "isBanned": true,
+    "isBanned": false,
     "Birthday": "1995-08-15",
     "Gender": "Ẩn danh",
     "SocialLinks": {
